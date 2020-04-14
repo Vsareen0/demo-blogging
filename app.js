@@ -7,9 +7,17 @@ dotenv.config();
 const mongoose = require("mongoose");
 var cookieParser = require("cookie-parser");
 app.use(cookieParser());
+const fs = require('fs');
 
 // Body Parser And Url encoded
 app.use(bodyParser.json(), bodyParser.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+    fs.readFile('index.html', (err, data) => {
+        if(err) res.status(400).send(`Error : ${err}`);
+        res.render(data);
+    });
+});
 
 // Routes   [ Blog posts , User ]
 const userRoute = require("./src/routes/User.route");

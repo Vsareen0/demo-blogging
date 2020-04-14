@@ -5,7 +5,7 @@ const  { blogs, addBlog, updateBlog, removeBlog } = require("../controllers/blog
 
 router.get("/blogs", blogs);
 
-router.post("/add/blogs", requiresSignIn, addBlog);
+router.post("/add/blog", requiresSignIn, addBlog);
 
 router.put("/edit/blog/:id", requiresSignIn, updateBlog);
 
